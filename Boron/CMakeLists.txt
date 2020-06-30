@@ -5,6 +5,11 @@ set(SOURCE_LIST
 	BoronCore/Application.h
 	BoronCore/Application.cpp
 	BoronCore/Entrypoint.h
+	BoronCore/Logging.h
+	BoronCore/Logging.cpp
+	BoronCore/Message.h
+	BoronCore/MessageBus.h
+	BoronCore/MessageBus.cpp
 )
 
 # Setup Boron as shared/dynamic library (dll)
@@ -19,3 +24,4 @@ source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${SOURCE_LIST})
 # Link any Libraries that Boron uses, add new libraries here
 target_link_libraries(Boron glfw)
 target_link_libraries(Boron glad)
+target_link_libraries(Boron spdlog)

@@ -1,4 +1,5 @@
 #pragma once
+#include "Logging.h"
 
 /*
 * This Header provides the main() function/Entry point for the application.
@@ -8,6 +9,8 @@
 extern Boron::Application* Boron::CreateApplication();
 
 int main(int argc, char** argv) {
+	Boron::Log::Init();
+
 	auto app = Boron::CreateApplication();
 	app->Run();
 	delete app;

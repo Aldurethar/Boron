@@ -1,8 +1,9 @@
 #include "Application.h"
+#include "MessageBus.h"
 #include <iostream>
 
 namespace Boron {
-
+		
 	Application::Application() {
 
 	}
@@ -13,7 +14,7 @@ namespace Boron {
 
 	void Application::Run() {
 		while (true) {
-			std::cout << "Running!";
+			MessageBus::Update();			
 		}
 	}
 }

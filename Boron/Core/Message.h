@@ -15,13 +15,15 @@ namespace Boron {
 		BoronLogInfo,
 		AppLogError,
 		AppLogWarning,
-		AppLogInfo
+		AppLogInfo,
+		Shutdown
 	};
 
 	// Categories of Messages as a bit field for quick checking
 	enum class MessageCategory : int {
 		Log = BIT(0),
-		Input = BIT(1)
+		Input = BIT(1),
+		Application = BIT(2)
 	};
 
 	// Base Message class, should only be used in derived form

@@ -47,4 +47,9 @@ namespace Boron {
 		LogMessage message(type, (int)MessageCategory::Log, text);				
 		return std::static_pointer_cast<Message>(std::make_shared<LogMessage>(message));
 	}
+
+	std::shared_ptr<Message> MessageBus::makeShutdownMessage() {
+		Message message(MessageType::Shutdown, (int)MessageCategory::Application);
+		return std::make_shared<Message>(message);
+	}
 }

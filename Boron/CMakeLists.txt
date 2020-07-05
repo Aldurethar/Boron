@@ -1,15 +1,17 @@
 # List of all the source files, add new files here
 set(SOURCE_LIST
 	Boron.h
-	BoronCore/Core.h
-	BoronCore/Application.h
-	BoronCore/Application.cpp
-	BoronCore/Entrypoint.h
-	BoronCore/Logging.h
-	BoronCore/Logging.cpp
-	BoronCore/Message.h
-	BoronCore/MessageBus.h
-	BoronCore/MessageBus.cpp
+	Core/Core.h
+	Core/Application.h
+	Core/Application.cpp
+	Core/Entrypoint.h
+	Core/Logging.h
+	Core/Logging.cpp
+	Core/Message.h
+	Core/MessageBus.h
+	Core/MessageBus.cpp
+	Graphics/Window.h
+	Graphics/Window.cpp
 )
 
 # Setup Boron as shared/dynamic library (dll)

@@ -32,6 +32,7 @@ namespace Boron {
 
 		// Factory Methods for various Message Types
 		static std::shared_ptr<Message> makeLogMessage(MessageType type, std::string text);
+		static std::shared_ptr<Message> makeShutdownMessage();
 
 	private:
 		// Message buffer size

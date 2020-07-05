@@ -2,9 +2,9 @@
 
 // Master header for inclusion into applications as single point of contact to Boron
 
-#include "BoronCore/Application.h"
-#include "BoronCore/Logging.h"
+#include "Core/Application.h"
+#include "Core/Logging.h"
 
 // Entry Point, contains main() function
-#include "BoronCore/Entrypoint.h"
+#include "Core/Entrypoint.h"
 

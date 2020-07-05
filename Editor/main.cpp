@@ -16,12 +16,6 @@ public:
 };
 
 Boron::Application* Boron::CreateApplication(){
-	BORON_ERROR("Engine Error Test");
-	BORON_WARNING("Engine Warning Test");
-	BORON_INFO("Engine Info Test");
-	APPLICATION_ERROR("Error in Application");
-	APPLICATION_WARNING("Application Warning");
-	APPLICATION_INFO("Application Info");
-
+	APPLICATION_INFO("Creating Application");
 	return new Editor();
 }

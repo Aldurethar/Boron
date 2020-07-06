@@ -1,6 +1,5 @@
 #pragma once
 
-#include "..//Core/Logging.h"
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 
@@ -20,4 +19,6 @@ namespace Boron {
 	void GlfwErrorCallback(int error, const char* description);
 
 	void GlfwCloseWindowCallback(GLFWwindow* window);
+
+	void GlfwKeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
 }

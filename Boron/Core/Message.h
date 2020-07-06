@@ -1,4 +1,7 @@
-#pragma 
+#pragma once
+
+#include "Input.h"
+#include "Core.h"
 #include <string>
 
 /*
@@ -7,8 +10,6 @@
 
 namespace Boron {
 
-#define BIT(i) (1 << i)
-
 	enum class MessageType {
 		BoronLogError,
 		BoronLogWarning,
@@ -16,7 +17,10 @@ namespace Boron {
 		AppLogError,
 		AppLogWarning,
 		AppLogInfo,
-		Shutdown
+		Shutdown,
+		InputKeyPressed,
+		InputKeyRepeat,
+		InputKeyReleased
 	};
 
 	// Categories of Messages as a bit field for quick checking
@@ -51,6 +55,20 @@ namespace Boron {
 		LogMessage(MessageType type, int category, std::string text) :
 			Message(type, category),
 			m_Text(text) {}
+	};
+	
+	class KeyInputMessage : public Message {
+		friend class MessageBus;
+
+	public:
+		const Keys m_Key;
+		const int m_Mods;
+
+	protected:
+		KeyInputMessage(MessageType type, int category, Keys key, int mods) :
+			Message(type, category),
+			m_Key(key),
+			m_Mods(mods) {}
 	};
 	
 }

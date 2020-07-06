@@ -1,6 +1,7 @@
 #include <iostream>
 #include <Boron.h>
 
+using namespace Boron;
 
 class Editor : public Boron::Application {
 public:
@@ -10,6 +11,14 @@ public:
 	}
 
 	~Editor() {
+
+	}
+
+	void HandleKeyInput(Keys key, KeyEventType type, int mods) {
+		
+	}
+
+	void Update() {
 
 	}
 

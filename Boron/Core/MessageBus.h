@@ -1,10 +1,11 @@
 #pragma once
 
+#include "Message.h"
+#include "Core.h"
 #include <memory>
 #include <vector>
 #include <string>
-#include "Message.h"
-#include "Core.h"
+
 
 /**
 * The Message Bus is the central communication bus between the engine subsystems.
@@ -31,8 +32,11 @@ namespace Boron {
 		static void Post(std::shared_ptr<Message> message);
 
 		// Factory Methods for various Message Types
-		static std::shared_ptr<Message> makeLogMessage(MessageType type, std::string text);
-		static std::shared_ptr<Message> makeShutdownMessage();
+		static std::shared_ptr<Message> MakeLogMessage(MessageType type, std::string text);
+		static std::shared_ptr<Message> MakeShutdownMessage();
+		static std::shared_ptr<Message> MakeKeyPressedMessage(Keys key, int mods);
+		static std::shared_ptr<Message> MakeKeyRepeatMessage(Keys key, int mods);
+		static std::shared_ptr<Message> MakeKeyReleasedMessage(Keys key, int mods);
 
 	private:
 		// Message buffer size

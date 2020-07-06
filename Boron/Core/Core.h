@@ -9,3 +9,5 @@
 #endif
 
 #define BR_ASSERT(b, t) {if (!b) {BORON_ERROR(std::string("Assertion Failed!:") + std::string(t)); __debugbreak(); } }
+
+#define BIT(i) (1 << i)

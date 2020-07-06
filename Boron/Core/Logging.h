@@ -27,12 +27,12 @@ namespace Boron {
 		
 	};
 
-#define BORON_ERROR(T) MessageBus::Post(MessageBus::makeLogMessage(MessageType::BoronLogError, T))
-#define BORON_WARNING(T) MessageBus::Post(MessageBus::makeLogMessage(MessageType::BoronLogWarning, T))
-#define BORON_INFO(T) MessageBus::Post(MessageBus::makeLogMessage(MessageType::BoronLogInfo, T))
+#define BORON_ERROR(T) MessageBus::Post(MessageBus::MakeLogMessage(MessageType::BoronLogError, T))
+#define BORON_WARNING(T) MessageBus::Post(MessageBus::MakeLogMessage(MessageType::BoronLogWarning, T))
+#define BORON_INFO(T) MessageBus::Post(MessageBus::MakeLogMessage(MessageType::BoronLogInfo, T))
 
-#define APPLICATION_ERROR(T) MessageBus::Post(MessageBus::makeLogMessage(MessageType::AppLogError, T))
-#define APPLICATION_WARNING(T) MessageBus::Post(MessageBus::makeLogMessage(MessageType::AppLogWarning, T))
-#define APPLICATION_INFO(T) MessageBus::Post(MessageBus::makeLogMessage(MessageType::AppLogInfo, T))
+#define APPLICATION_ERROR(T) MessageBus::Post(MessageBus::MakeLogMessage(MessageType::AppLogError, T))
+#define APPLICATION_WARNING(T) MessageBus::Post(MessageBus::MakeLogMessage(MessageType::AppLogWarning, T))
+#define APPLICATION_INFO(T) MessageBus::Post(MessageBus::MakeLogMessage(MessageType::AppLogInfo, T))
 	
 }

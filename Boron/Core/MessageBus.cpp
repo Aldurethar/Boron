@@ -43,13 +43,28 @@ namespace Boron {
 		m_Observers.emplace_back(obs);
 	}
 
-	std::shared_ptr<Message> MessageBus::makeLogMessage(MessageType type, std::string text) {
+	std::shared_ptr<Message> MessageBus::MakeLogMessage(MessageType type, std::string text) {
 		LogMessage message(type, (int)MessageCategory::Log, text);				
 		return std::static_pointer_cast<Message>(std::make_shared<LogMessage>(message));
 	}
 
-	std::shared_ptr<Message> MessageBus::makeShutdownMessage() {
+	std::shared_ptr<Message> MessageBus::MakeShutdownMessage() {
 		Message message(MessageType::Shutdown, (int)MessageCategory::Application);
 		return std::make_shared<Message>(message);
+	}
+	
+	std::shared_ptr<Message> MessageBus::MakeKeyPressedMessage(Keys key, int mods) {
+		KeyInputMessage message(MessageType::InputKeyPressed, (int)MessageCategory::Input, key, mods);
+		return std::static_pointer_cast<Message>(std::make_shared<KeyInputMessage>(message));
+	}
+
+	std::shared_ptr<Message> MessageBus::MakeKeyRepeatMessage(Keys key, int mods) {
+		KeyInputMessage message(MessageType::InputKeyRepeat, (int)MessageCategory::Input, key, mods);
+		return std::static_pointer_cast<Message>(std::make_shared<KeyInputMessage>(message));
+	}
+
+	std::shared_ptr<Message> MessageBus::MakeKeyReleasedMessage(Keys key, int mods) {
+		KeyInputMessage message(MessageType::InputKeyReleased, (int)MessageCategory::Input, key, mods);
+		return std::static_pointer_cast<Message>(std::make_shared<KeyInputMessage>(message));
 	}
 }

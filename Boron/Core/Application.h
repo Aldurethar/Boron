@@ -21,6 +21,10 @@ namespace Boron {
 
 		void Run();
 
+		virtual void HandleKeyInput(Keys key, KeyEventType type, int mods) = 0;
+		virtual void Update() = 0;
+		
+
 	private:
 		bool m_Running;
 		std::shared_ptr<ApplicationMessageObserver> m_Observer;

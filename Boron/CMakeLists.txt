@@ -10,8 +10,10 @@ set(SOURCE_LIST
 	Core/Message.h
 	Core/MessageBus.h
 	Core/MessageBus.cpp
-	Graphics/Window.h
-	Graphics/Window.cpp
+	Core/Window.h
+	Core/Window.cpp
+	Core/Input.h
+	Core/Input.cpp
 )
 
 # Setup Boron as shared/dynamic library (dll)

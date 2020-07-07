@@ -1,13 +1,36 @@
 #pragma once
 
 #include "Core.h"
+#include <unordered_map>
+#include <memory>
 
 /*
 * Header for Input handling.
 * The enums are visible to the Application and can be used to handle Application-specific Input
+* Inputs will be communicated to the Application through calls to the HandleInput() functions
+* The Input class provides capabilities to request Key states and Cursor position
 */
 
 namespace Boron {
+
+	// Forward declarations for Enums
+	enum class Keys : int;
+
+	class BORON_API Input {
+		friend class InputHandler;
+
+	public:
+		static bool IsKeyDown(Keys key);
+		static float MouseX();
+		static float MouseY();
+
+		static void Init();
+
+	private:
+		static float m_MouseX;
+		static float m_MouseY;
+		static std::unordered_map<Keys, bool>* m_KeyStates;
+	};
 
 	class InputHandler {
 	public:

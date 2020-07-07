@@ -15,6 +15,10 @@ public:
 	}
 
 	void HandleKeyInput(Keys key, KeyEventType type, int mods) {
+
+	}
+
+	void HandleMouseMoved(float newX, float newY) {
 		
 	}
 

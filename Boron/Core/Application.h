@@ -22,6 +22,7 @@ namespace Boron {
 		void Run();
 
 		virtual void HandleKeyInput(Keys key, KeyEventType type, int mods) = 0;
+		virtual void HandleMouseMoved(float newX, float newY) = 0;
 		virtual void Update() = 0;
 		
 

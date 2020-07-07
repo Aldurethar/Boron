@@ -2,6 +2,7 @@
 
 #include "MessageBus.h"
 #include <cassert>
+#include <iostream>
 
 namespace Boron {
 	
@@ -20,7 +21,7 @@ namespace Boron {
 		MessageBus::m_MessageTail = 0;		
 	}
 	
-	void MessageBus::Update() {
+	void MessageBus::Update() {		
 		for (; m_MessageHead != m_MessageTail; m_MessageHead = (m_MessageHead + 1) % k_MessageLimit) {
 			Dispatch(m_Messages[m_MessageHead]);
 		}
@@ -35,7 +36,7 @@ namespace Boron {
 
 	void MessageBus::Post(std::shared_ptr<Message> message) {
 		m_Messages[m_MessageTail] = message;
-		m_MessageTail++;
+		m_MessageTail = (m_MessageTail + 1) % k_MessageLimit;
 	}
 
 	void MessageBus::RegisterObserver(std::shared_ptr<MessageObserver> observer, int filter) {
@@ -66,5 +67,10 @@ namespace Boron {
 	std::shared_ptr<Message> MessageBus::MakeKeyReleasedMessage(Keys key, int mods) {
 		KeyInputMessage message(MessageType::InputKeyReleased, (int)MessageCategory::Input, key, mods);
 		return std::static_pointer_cast<Message>(std::make_shared<KeyInputMessage>(message));
+	}
+
+	std::shared_ptr<Message> MessageBus::MakeMouseMovedMessage(float x, float y) {
+		MouseMovedMessage message(MessageType::InputMouseMoved, (int)MessageCategory::Input, x, y);
+		return std::static_pointer_cast<Message>(std::make_shared<MouseMovedMessage>(message));
 	}
 }

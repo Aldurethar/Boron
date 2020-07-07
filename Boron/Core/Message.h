@@ -20,7 +20,8 @@ namespace Boron {
 		Shutdown,
 		InputKeyPressed,
 		InputKeyRepeat,
-		InputKeyReleased
+		InputKeyReleased,
+		InputMouseMoved
 	};
 
 	// Categories of Messages as a bit field for quick checking
@@ -71,4 +72,17 @@ namespace Boron {
 			m_Mods(mods) {}
 	};
 	
+	class MouseMovedMessage : public Message {
+		friend class MessageBus;
+
+	public:
+		const float m_X;
+		const float m_Y;
+
+	protected:
+		MouseMovedMessage(MessageType type, int category, float x, float y) :
+			Message(type, category),
+			m_X(x),
+			m_Y(y) {}
+	};
 }

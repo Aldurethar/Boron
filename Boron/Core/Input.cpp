@@ -20,4 +20,19 @@ namespace Boron {
 			break;
 		}
 	}
+
+	void InputHandler::HandleMouseInput(int button, int action, int mods) {
+		switch (action) {
+		case GLFW_PRESS:
+			MessageBus::Post(MessageBus::MakeKeyPressedMessage((Keys)button, mods));
+			break;
+		case GLFW_RELEASE:
+			MessageBus::Post(MessageBus::MakeKeyReleasedMessage((Keys)button, mods));
+			break;
+		}
+	}
+
+	void InputHandler::HandleMousePos(double xPos, double yPos) {
+		MessageBus::Post(MessageBus::MakeMouseMovedMessage((float)xPos, (float)yPos));
+	}
 }

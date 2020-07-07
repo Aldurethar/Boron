@@ -31,7 +31,19 @@ namespace Boron {
 		// Main Game Loop
 		while (m_Running) {
 			MessageBus::Update();
-			appWindow->Update();
+			// Handle Input
+			appWindow->ProcessInput();
+			MessageBus::Update();
+
+			// Update Application
+			Update();
+			MessageBus::Update();
+			
+			// Update Gamestate
+			
+			// Update Physics
+
+			// Render
 		}
 	}
 
@@ -48,17 +60,21 @@ namespace Boron {
 			m_Parent.m_Running = false;
 		if (msg->m_Category == (int)MessageCategory::Input) {
 			
-			// Keyboard Input
+			// Keyboard and Mouse Input forwarded to Application
 			if (msg->m_Type == MessageType::InputKeyPressed ||
 				msg->m_Type == MessageType::InputKeyRepeat ||
 				msg->m_Type == MessageType::InputKeyReleased) {
 
 				std::shared_ptr<KeyInputMessage> message = std::static_pointer_cast<KeyInputMessage>(msg);
 				KeyEventType type;
-				if (message->m_Type == MessageType::InputKeyPressed) type = KeyEventType::BR_KEY_PRESSED;
-				else if (message->m_Type == MessageType::InputKeyRepeat) type = KeyEventType::BR_KEY_REPEAT;
-				else type = KeyEventType::BR_KEY_RELEASED;
+				if (message->m_Type == MessageType::InputKeyPressed) type = KeyEventType::KeyPressed;
+				else if (message->m_Type == MessageType::InputKeyRepeat) type = KeyEventType::KeyRepeat;
+				else type = KeyEventType::KeyReleased;
 				m_Parent.HandleKeyInput(message->m_Key, type, message->m_Mods);
+			}
+			else if (msg->m_Type == MessageType::InputMouseMoved) {
+				std::shared_ptr<MouseMovedMessage> message = std::static_pointer_cast<MouseMovedMessage>(msg);
+				m_Parent.HandleMouseMoved(message->m_X, message->m_Y);
 			}
 			
 		}

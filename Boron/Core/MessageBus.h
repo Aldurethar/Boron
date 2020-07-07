@@ -37,6 +37,7 @@ namespace Boron {
 		static std::shared_ptr<Message> MakeKeyPressedMessage(Keys key, int mods);
 		static std::shared_ptr<Message> MakeKeyRepeatMessage(Keys key, int mods);
 		static std::shared_ptr<Message> MakeKeyReleasedMessage(Keys key, int mods);
+		static std::shared_ptr<Message> MakeMouseMovedMessage(float x, float y);
 
 	private:
 		// Message buffer size

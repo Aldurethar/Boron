@@ -29,6 +29,8 @@ namespace Boron {
 
 		glfwSetWindowCloseCallback(m_Window, GlfwCloseWindowCallback);
 		glfwSetKeyCallback(m_Window, GlfwKeyCallback);
+		glfwSetMouseButtonCallback(m_Window, GlfwMouseButtonCallback);
+		glfwSetCursorPosCallback(m_Window, GlfwMousePosCallback);
 
 		BORON_INFO("Window created");
 	}
@@ -38,7 +40,7 @@ namespace Boron {
 		glfwTerminate();
 	}
 
-	void Window::Update() {
+	void Window::ProcessInput() {
 		glfwPollEvents();
 	}
 
@@ -56,5 +58,13 @@ namespace Boron {
 
 	void GlfwKeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
 		InputHandler::HandleKeyInput(key, scancode, action, mods);
+	}
+
+	void GlfwMouseButtonCallback(GLFWwindow* window, int button, int action, int mods) {
+		InputHandler::HandleMouseInput(button, action, mods);
+	}
+
+	void GlfwMousePosCallback(GLFWwindow* window, double xPos, double yPos) {
+		InputHandler::HandleMousePos(xPos, yPos);
 	}
 }

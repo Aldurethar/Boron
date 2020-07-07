@@ -10,7 +10,7 @@ namespace Boron {
 		Window();
 		~Window();
 
-		void Update();
+		void ProcessInput();
 
 	private:
 		GLFWwindow* m_Window;
@@ -21,4 +21,8 @@ namespace Boron {
 	void GlfwCloseWindowCallback(GLFWwindow* window);
 
 	void GlfwKeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
+
+	void GlfwMouseButtonCallback(GLFWwindow* window, int button, int action, int mods);
+
+	void GlfwMousePosCallback(GLFWwindow* window, double xPos, double yPos);
 }

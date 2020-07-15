@@ -44,6 +44,8 @@ namespace Boron {
 			// Update Physics
 
 			// Render
+
+			appWindow->SwapBuffers();
 		}
 	}
 

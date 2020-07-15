@@ -11,12 +11,15 @@ namespace Boron {
 		~Window();
 
 		void ProcessInput();
+		void SwapBuffers();
 
 	private:
 		GLFWwindow* m_Window;
 	};
 
 	void GlfwErrorCallback(int error, const char* description);
+
+	void GlfwFramebufferSizeCallback(GLFWwindow* window, int width, int height);
 
 	void GlfwCloseWindowCallback(GLFWwindow* window);
 

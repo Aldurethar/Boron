@@ -22,11 +22,15 @@ namespace Boron {
 		m_Window = glfwCreateWindow(1280, 720, "Boron Engine", NULL, NULL);
 		if (!m_Window) {
 			BORON_ERROR("Window Creation Failed!");
+			glfwTerminate();
 		}
 		
 		glfwMakeContextCurrent(m_Window);
 		gladLoadGL();
+		gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		glViewport(0, 0, 1280, 720);
 
+		glfwSetFramebufferSizeCallback(m_Window, GlfwFramebufferSizeCallback);
 		glfwSetWindowCloseCallback(m_Window, GlfwCloseWindowCallback);
 		glfwSetKeyCallback(m_Window, GlfwKeyCallback);
 		glfwSetMouseButtonCallback(m_Window, GlfwMouseButtonCallback);
@@ -44,12 +48,20 @@ namespace Boron {
 		glfwPollEvents();
 	}
 
+	void Window::SwapBuffers() {
+		glfwSwapBuffers(m_Window);
+	}
+
 	/**************************************/
 	/* GLFW Callback Functions			  */
 	/**************************************/
 
 	void GlfwErrorCallback(int error, const char* description) {
 		BORON_ERROR("GLFW Error: " + std::to_string(error) + std::string(description));
+	}
+
+	void GlfwFramebufferSizeCallback(GLFWwindow* window, int width, int height) {
+		glViewport(0, 0, width, height);
 	}
 
 	void GlfwCloseWindowCallback(GLFWwindow* window) {

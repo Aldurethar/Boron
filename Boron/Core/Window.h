@@ -16,7 +16,7 @@ namespace Boron {
 	private:
 		GLFWwindow* m_Window;
 	};
-
+	
 	void GlfwErrorCallback(int error, const char* description);
 
 	void GlfwFramebufferSizeCallback(GLFWwindow* window, int width, int height);

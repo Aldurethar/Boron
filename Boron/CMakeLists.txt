@@ -14,6 +14,8 @@ set(SOURCE_LIST
 	Core/Window.cpp
 	Core/Input.h
 	Core/Input.cpp
+	Graphics/GuiLayer.h
+	Graphics/GuiLayer.cpp
 )
 
 # Setup Boron as shared/dynamic library (dll)
